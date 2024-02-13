@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Day Card</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      background-color: pink;
+      background-image: url('https://img.freepik.com/free-vector/watercolor-hearts-seamless-pattern_1108-561.jpg');
+      background-repeat: repeat;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    #yes-button,
+    #no-button {
+      display: block;
+    }
+
+    #yes-button {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #no-button {
+      background-color: #f44336;
+      color: white;
+    }
+
+    #valentine-image {
+      display: none;
+      max-width: 100%;
+      height: auto;
+      margin-top: 20px;
+    }
+
+    #valentine-text {
+      font-size: 24px;
+      color: rebeccapurple;
+      margin-top: 20px;
+    }
+
+    #yay-text {
+      display: none;
+      font-size: 24px;
+      color: pink;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <p id="valentine-text">Will you be my Valentine?</p>
+  <p id="yay-text">Yay!!</p>
+
+  <button id="yes-button" onclick="displayValentine()">Yes</button>
+  <button id="no-button" onclick="moveNoButton()">No</button>
+
+  <div id="valentine-image-container">
+    <!-- Image will be inserted here dynamically -->
+  </div>
+
+  <script>
+    function moveNoButton() {
+      const button = document.getElementById('no-button');
+      const maxX = window.innerWidth - button.clientWidth;
+      const maxY = window.innerHeight - button.clientHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      button.style.position = 'absolute';
+      button.style.left = randomX + 'px';
+      button.style.top = randomY + 'px';
+    }
+
+    function displayValentine() {
+      const valentineText = document.getElementById('valentine-text');
+      const yayText = document.getElementById('yay-text');
+      const imageContainer = document.getElementById('valentine-image-container');
+      const yesButton = document.getElementById('yes-button');
+      const noButton = document.getElementById('no-button');
+
+      valentineText.style.display = 'none';
+      yayText.style.display = 'block';
+      yesButton.style.display = 'none';
+      noButton.style.display = 'none';
+
+      // Dynamically create and append the image element
+      const image = document.createElement('img');
+      image.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4cwv5_wpBiLRkiw4tzmSln3R2z_48DI6CDbVjClRIxAmKPvWReTgk8wy_17QjIRlQCUs&usqp=CAU';
+      image.alt = "Valentine's Day";
+      image.style.maxWidth = '100%';
+      image.style.height = 'auto';
+      imageContainer.appendChild(image);
+    }
+  </script>
+</body>
+</html>
